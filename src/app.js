@@ -55,7 +55,7 @@ document.getElementById('upload').onclick = function () {
                 output.className = 'text-2xl text-red-500 mt-10';
                 output.innerHTML = err.message;
             }
-        }
+        })
 
 };
 
@@ -107,7 +107,7 @@ document.getElementById('download').onclick = function () {
                 output.className = 'text-2xl text-red-500 mt-10';
                 output.innerHTML = err.message;
             }
-        }
+        })
             .then(function (res) {
                 //output.className = 'container';
                 //output.innerHTML = res.data;
