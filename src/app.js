@@ -46,12 +46,12 @@ document.getElementById('upload').onclick = function () {
 };
 
 
-document.getElementById('/speedtest/download').onclick = function () {
+document.getElementById('download').onclick = function () {
 
     output.innerHTML = "Starting download..."
 
     axios.get({
-        url: '/down',
+        url: '/speedtest/down',
         responseType: 'blob',
     })
         .then((response) => {
