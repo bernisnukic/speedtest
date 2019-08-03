@@ -33,7 +33,7 @@ document.getElementById('upload').onclick = function () {
         }
     };
 
-    axios.post('/up', data, config)
+    axios.post('/speedtest/up', data, config)
         .then(function (res) {
             //output.className = 'container';
             //output.innerHTML = res.data;
@@ -46,7 +46,7 @@ document.getElementById('upload').onclick = function () {
 };
 
 
-document.getElementById('download').onclick = function () {
+document.getElementById('/speedtest/download').onclick = function () {
 
     output.innerHTML = "Starting download..."
 
