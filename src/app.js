@@ -50,16 +50,22 @@ document.getElementById('download').onclick = function () {
 
     output.innerHTML = "Starting download..."
 
+    var config = {
+        onDownloadProgress: function(progressEvent) {
+            console.log('download', progressEvent);
+        },
+    };
+
     axios.get('https://speedtest.bernis.dev/speedtest/down?bytes=100000000', {
         responseType: 'blob',
-    })
+    }, config)
         .then((response) => {
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
             link.setAttribute('download', 'speedtest-file'); //or any other extension
             document.body.appendChild(link);
-            link.click();
+            //link.click();
         })
         .then(function (res) {
             //output.className = 'container';
