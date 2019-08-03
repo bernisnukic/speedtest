@@ -52,13 +52,10 @@ document.getElementById('upload').onclick = function () {
             if (axios.isCancel(thrown)) {
                 console.log('Request canceled', thrown.message);
             } else {
-                // handle error
-            }
-        }
-            .catch(function (err) {
                 output.className = 'text-2xl text-red-500 mt-10';
                 output.innerHTML = err.message;
-            });
+            }
+        }
 
 };
 
@@ -107,16 +104,13 @@ document.getElementById('download').onclick = function () {
             if (axios.isCancel(thrown)) {
                 console.log('Request canceled', thrown.message);
             } else {
-                // handle error
+                output.className = 'text-2xl text-red-500 mt-10';
+                output.innerHTML = err.message;
             }
         }
             .then(function (res) {
                 //output.className = 'container';
                 //output.innerHTML = res.data;
             })
-            .catch(function (err) {
-                output.className = 'text-2xl text-red-500 mt-10';
-                output.innerHTML = err.message;
-            });
 
 };
