@@ -21,6 +21,7 @@ document.getElementById('upload').onclick = function () {
     document.getElementById("stop").style.display = "block";
 
     var config = {
+        cancelToken: source.token,
         onUploadProgress: function (progressEvent) {
             var percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
 
@@ -67,6 +68,7 @@ document.getElementById('download').onclick = function () {
 
     axios.get('https://speedtest.bernis.dev/speedtest/down?bytes=100000000', {
         responseType: 'blob',
+        cancelToken: source.token,
         onDownloadProgress: function (progressEvent) {
             endTime = (new Date()).getTime();
 
