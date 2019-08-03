@@ -62,7 +62,7 @@ document.getElementById('upload').onclick = function () {
             if (axios.isCancel(thrown)) {
                 console.log('Request canceled', thrown.message);
             } else {
-                output.className = 'text-2xl text-red-500 mt-10';
+                output.className = 'text-red-500 mt-10';
                 output.innerHTML = err.message;
             }
         })
@@ -126,7 +126,7 @@ document.getElementById('download').onclick = function () {
             if (axios.isCancel(thrown)) {
                 console.log('Request canceled', thrown.message);
             } else {
-                output.className = 'text-2xl text-red-500 mt-10';
+                output.className = 'text-red-500 mt-10';
                 output.innerHTML = err.message;
             }
         })
