@@ -15,6 +15,9 @@ document.getElementById('upload').onclick = function () {
 
     document.getElementById('stop').onclick = function () {
         source.cancel('Operation canceled by the user.');
+
+        document.getElementById("download").disabled = false;
+
     };
 
     let data = '0'.repeat(100000000)
@@ -22,7 +25,9 @@ document.getElementById('upload').onclick = function () {
     let timeStamp = Date.now();
     let prevProgress = 0;
     output.innerHTML = "Starting upload..."
+
     document.getElementById("stop").style.display = "block";
+    document.getElementById("download").disabled = true;
 
     var config = {
         cancelToken: source.token,
@@ -51,6 +56,7 @@ document.getElementById('upload').onclick = function () {
         .then(function (res) {
             //output.className = 'container';
             //output.innerHTML = res.data;
+            document.getElementById("download").disabled = false;
         })
         .catch(function (thrown) {
             if (axios.isCancel(thrown)) {
@@ -71,10 +77,15 @@ document.getElementById('download').onclick = function () {
 
     document.getElementById('stop').onclick = function () {
         source.cancel('Operation canceled by the user.');
+
+        document.getElementById("upload").disabled = false;
     };
 
     output.innerHTML = "Starting download..."
+
     document.getElementById("stop").style.display = "block";
+    document.getElementById("upload").disabled = true;
+
 
     var startTime, endTime;
 
@@ -122,6 +133,8 @@ document.getElementById('download').onclick = function () {
             .then(function (res) {
                 //output.className = 'container';
                 //output.innerHTML = res.data;
+
+                document.getElementById("upload").disabled = false;
             })
 
 };
