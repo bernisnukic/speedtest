@@ -73,7 +73,7 @@ document.getElementById('download').onclick = function () {
         onDownloadProgress: function(progressEvent) {
             endTime = (new Date()).getTime();
 
-            let downloadSize = progressEvent.progress.loaded
+            let downloadSize = progressEvent.loaded
 
             var duration = (endTime - startTime) / 1000;
             var bitsLoaded = downloadSize * 8;
