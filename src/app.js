@@ -50,7 +50,7 @@ document.getElementById('download').onclick = function () {
 
     output.innerHTML = "Starting download..."
 
-    axios.get('/speedtest/down')
+    axios.get('https://speedtest.bernis.dev/speedtest/down')
         .then(function (res) {
             //output.className = 'container';
             //output.innerHTML = res.data;
