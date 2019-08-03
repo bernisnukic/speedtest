@@ -2,7 +2,6 @@ node_modules/
 dist/
 public/css/
 public/js
-_redirects
 
 .vscode/*
 !.vscode/settings.json

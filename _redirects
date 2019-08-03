@@ -1,0 +1,2 @@
+# Redirect default Netlify subdomain to primary domain
+https://dreamy-lamarr-6b83bc.netlify.com/* https://speedtest.bernis.dev/:splat 301!
