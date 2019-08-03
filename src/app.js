@@ -50,15 +50,37 @@ document.getElementById('download').onclick = function () {
 
     output.innerHTML = "Starting download..."
 
+    var startTime, endTime;
+
     var config = {
         onDownloadProgress: function(progressEvent) {
-            console.log('download', progressEvent);
+            // console.log('download', progressEvent);
+            // console.info('speed', progressEvent, '  MB/sec');
+
+            let endTime = (new Date()).getTime();
+
+
         },
     };
+
+    var startTime, endTime;
+
+    startTime = (new Date()).getTime();
 
     axios.get('https://speedtest.bernis.dev/speedtest/down?bytes=100000000', {
         responseType: 'blob',
         onDownloadProgress: function(progressEvent) {
+            endTime = (new Date()).getTime();
+
+            var duration = (endTime - startTime) / 1000;
+            var bitsLoaded = downloadSize * 8;
+            var speedBps = (bitsLoaded / duration).toFixed(2);
+            var speedKbps = (speedBps / 1024).toFixed(2);
+            var speedMbps = (speedKbps / 1024).toFixed(2);
+
+
+            console.info('speed', speedMbps, '  MB/sec');
+
             console.log('download', progressEvent);
         },
     })
