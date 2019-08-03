@@ -48,10 +48,17 @@ document.getElementById('upload').onclick = function () {
             //output.className = 'container';
             //output.innerHTML = res.data;
         })
-        .catch(function (err) {
-            output.className = 'text-2xl text-red-500 mt-10';
-            output.innerHTML = err.message;
-        });
+        .catch(function (thrown) {
+            if (axios.isCancel(thrown)) {
+                console.log('Request canceled', thrown.message);
+            } else {
+                // handle error
+            }
+        }
+            .catch(function (err) {
+                output.className = 'text-2xl text-red-500 mt-10';
+                output.innerHTML = err.message;
+            });
 
 };
 
@@ -96,13 +103,20 @@ document.getElementById('download').onclick = function () {
             document.body.appendChild(link);
             //link.click();
         })
-        .then(function (res) {
-            //output.className = 'container';
-            //output.innerHTML = res.data;
-        })
-        .catch(function (err) {
-            output.className = 'text-2xl text-red-500 mt-10';
-            output.innerHTML = err.message;
-        });
+        .catch(function (thrown) {
+            if (axios.isCancel(thrown)) {
+                console.log('Request canceled', thrown.message);
+            } else {
+                // handle error
+            }
+        }
+            .then(function (res) {
+                //output.className = 'container';
+                //output.innerHTML = res.data;
+            })
+            .catch(function (err) {
+                output.className = 'text-2xl text-red-500 mt-10';
+                output.innerHTML = err.message;
+            });
 
 };
