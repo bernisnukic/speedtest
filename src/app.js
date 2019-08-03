@@ -1,7 +1,15 @@
 
 const axios = require('axios');
 
+const CancelToken = axios.CancelToken;
+const source = CancelToken.source();
+
 var output = document.getElementById('output');
+
+
+document.getElementById('stop').onclick = function () {
+    source.cancel('Operation canceled by the user.');
+};
 
 document.getElementById('upload').onclick = function () {
 
@@ -10,6 +18,7 @@ document.getElementById('upload').onclick = function () {
     let timeStamp = Date.now();
     let prevProgress = 0;
     output.innerHTML = "Starting upload..."
+    document.getElementById("stop").style.display = "block";
 
     var config = {
         onUploadProgress: function (progressEvent) {
@@ -49,6 +58,7 @@ document.getElementById('upload').onclick = function () {
 document.getElementById('download').onclick = function () {
 
     output.innerHTML = "Starting download..."
+    document.getElementById("stop").style.display = "block";
 
     var startTime, endTime;
 
@@ -57,7 +67,7 @@ document.getElementById('download').onclick = function () {
 
     axios.get('https://speedtest.bernis.dev/speedtest/down?bytes=100000000', {
         responseType: 'blob',
-        onDownloadProgress: function(progressEvent) {
+        onDownloadProgress: function (progressEvent) {
             endTime = (new Date()).getTime();
 
             let downloadSize = progressEvent.loaded
