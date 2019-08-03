@@ -50,7 +50,9 @@ document.getElementById('download').onclick = function () {
 
     output.innerHTML = "Starting download..."
 
-    axios.get('https://speedtest.bernis.dev/speedtest/down?bytes=100000000')
+    axios.get('https://speedtest.bernis.dev/speedtest/down?bytes=100000000', {
+        responseType: 'arraybuffer',
+    })
         .then(function (res) {
             //output.className = 'container';
             //output.innerHTML = res.data;
