@@ -51,7 +51,7 @@ document.getElementById('download').onclick = function () {
     output.innerHTML = "Starting download..."
 
     axios.get('https://speedtest.bernis.dev/speedtest/down?bytes=100000000', {
-        responseType: 'arraybuffer',
+        responseType: 'blob',
     })
         .then((response) => {
             const url = window.URL.createObjectURL(new Blob([response.data]));
