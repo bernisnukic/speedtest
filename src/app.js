@@ -1,15 +1,12 @@
 
 const axios = require('axios');
 
-const CancelToken = axios.CancelToken;
-const source = CancelToken.source();
+
 
 var output = document.getElementById('output');
 
 
-document.getElementById('stop').onclick = function () {
-    source.cancel('Operation canceled by the user.');
-};
+
 
 document.getElementById('upload').onclick = function () {
 
@@ -61,6 +58,13 @@ document.getElementById('upload').onclick = function () {
 
 
 document.getElementById('download').onclick = function () {
+
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
+
+    document.getElementById('stop').onclick = function () {
+        source.cancel('Operation canceled by the user.');
+    };
 
     output.innerHTML = "Starting download..."
     document.getElementById("stop").style.display = "block";
