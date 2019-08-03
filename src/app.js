@@ -66,14 +66,14 @@ document.getElementById('download').onclick = function () {
     var startTime, endTime;
 
     startTime = (new Date()).getTime();
-    var downloadSize = 100000000;
+    //var downloadSize = 100000000;
 
     axios.get('https://speedtest.bernis.dev/speedtest/down?bytes=100000000', {
         responseType: 'blob',
         onDownloadProgress: function(progressEvent) {
             endTime = (new Date()).getTime();
 
-            let bitsLoaded = progressEvent.progress.loaded
+            let downloadSize = progressEvent.progress.loaded
 
             var duration = (endTime - startTime) / 1000;
             var bitsLoaded = downloadSize * 8;
