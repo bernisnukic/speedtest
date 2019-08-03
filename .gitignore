@@ -1,3 +1,9 @@
 node_modules/
 dist/
-public/
+public/css/
+public/js
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
