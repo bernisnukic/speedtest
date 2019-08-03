@@ -10,6 +10,13 @@ var output = document.getElementById('output');
 
 document.getElementById('upload').onclick = function () {
 
+    const CancelToken = axios.CancelToken;
+    const source = CancelToken.source();
+
+    document.getElementById('stop').onclick = function () {
+        source.cancel('Operation canceled by the user.');
+    };
+
     let data = '0'.repeat(100000000)
 
     let timeStamp = Date.now();
