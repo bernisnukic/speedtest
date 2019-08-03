@@ -52,19 +52,6 @@ document.getElementById('download').onclick = function () {
 
     var startTime, endTime;
 
-    var config = {
-        onDownloadProgress: function(progressEvent) {
-            // console.log('download', progressEvent);
-            // console.info('speed', progressEvent, '  MB/sec');
-
-            let endTime = (new Date()).getTime();
-
-
-        },
-    };
-
-    var startTime, endTime;
-
     startTime = (new Date()).getTime();
     //var downloadSize = 100000000;
 
@@ -80,9 +67,11 @@ document.getElementById('download').onclick = function () {
             var speedBps = (bitsLoaded / duration).toFixed(2);
             var speedKbps = (speedBps / 1024).toFixed(2);
             var speedMbps = (speedKbps / 1024).toFixed(2);
+            var speedMBps = (speedKbps / 1024 / 8).toFixed(2);
 
+            console.info('speed', speedMBps, '  MB/sec');
 
-            console.info('speed', speedMbps, '  MB/sec');
+            output.innerHTML = "Download speed: " + speedMBps + " MB/sec"
 
             console.log('download', progressEvent);
         },
