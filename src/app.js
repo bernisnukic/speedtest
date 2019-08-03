@@ -66,6 +66,7 @@ document.getElementById('download').onclick = function () {
     var startTime, endTime;
 
     startTime = (new Date()).getTime();
+    var downloadSize = 100000000;
 
     axios.get('https://speedtest.bernis.dev/speedtest/down?bytes=100000000', {
         responseType: 'blob',
