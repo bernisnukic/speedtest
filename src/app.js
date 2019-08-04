@@ -7,6 +7,10 @@ var output = document.getElementById('output');
 
 var ctx = document.getElementById('myChart');
 
+// track the last chart canvas so that we can properly remove it, 
+// otherwise it will remain in DOM and interfere when user tries to hover over chart
+let current_chart = false;
+
 
 Chart.defaults.global.defaultFontColor = "#aaa";
 
@@ -15,10 +19,16 @@ document.getElementById('upload').onclick = function () {
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
 
-    stopButtonHandler(source)
-    setButtonStates()
-    
     let uploadChart = createChart()
+
+    if (current_chart) {
+        current_chart.destroy()
+    }
+
+    current_chart = uploadChart
+
+    stopButtonHandler(source, uploadChart)
+    setButtonStates()
 
     let data = '0'.repeat(100000000)
 
@@ -80,9 +90,17 @@ document.getElementById('download').onclick = function () {
     const CancelToken = axios.CancelToken;
     const source = CancelToken.source();
 
-    stopButtonHandler(source)
-    setButtonStates()
     let downloadChart = createChart()
+
+
+    if (current_chart) {
+        current_chart.destroy()
+    }
+
+    current_chart = downloadChart
+
+    stopButtonHandler(source, downloadChart)
+    setButtonStates()
 
     output.innerHTML = "Starting download...";
 
@@ -155,14 +173,18 @@ function setButtonStates() {
     document.getElementById("download").disabled = false;
     document.getElementById("download").style.opacity = "0.5";
 
-    document.getElementById("stop").innerHTML = "Stop";
-    document.getElementById("stop").style.opacity = "1";
+    // document.getElementById("stop").innerHTML = "Stop";
+    // document.getElementById("stop").style.opacity = "1";
+
+    document.getElementById("stop").style.visibility = "unset"
 }
 
 
-function stopButtonHandler(source) {
+function stopButtonHandler(source, chart) {
     document.getElementById('stop').onclick = function () {
         source.cancel('Operation canceled by the user.');
+
+        //chart.destroy()
 
         document.getElementById("upload").disabled = false;
         document.getElementById("upload").style.opacity = "1";
@@ -170,8 +192,10 @@ function stopButtonHandler(source) {
         document.getElementById("download").disabled = false;
         document.getElementById("download").style.opacity = "1";
 
-        document.getElementById("stop").innerHTML = "Stopped";
-        document.getElementById("stop").style.opacity = "0.5";
+        // document.getElementById("stop").innerHTML = "Stopped";
+        // document.getElementById("stop").style.opacity = "0.5";
+
+        document.getElementById("stop").style.visibility = "hidden"
     };
 }
 
