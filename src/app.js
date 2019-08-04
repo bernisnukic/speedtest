@@ -134,7 +134,7 @@ document.getElementById('download').onclick = function () {
             });
             downloadChart.update();
 
-            console.log('download', progressEvent);
+            //console.log('download', progressEvent);
         },
     })
 
