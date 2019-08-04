@@ -150,10 +150,13 @@ function setButtonStates() {
     document.getElementById("chart").style.visibility = "visible";
 
     document.getElementById("upload").disabled = false;
-    document.getElementById("upload").style.opacity = "1";
+    document.getElementById("upload").style.opacity = "0.5";
 
     document.getElementById("download").disabled = false;
-    document.getElementById("download").style.opacity = "1";
+    document.getElementById("download").style.opacity = "0.5";
+
+    document.getElementById("stop").innerHTML = "Stop";
+    document.getElementById("stop").style.opacity = "1";
 }
 
 
@@ -166,6 +169,9 @@ function stopButtonHandler(source) {
 
         document.getElementById("download").disabled = false;
         document.getElementById("download").style.opacity = "1";
+
+        document.getElementById("stop").innerHTML = "Stopped";
+        document.getElementById("stop").style.opacity = "0.5";
     };
 }
 
